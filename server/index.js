@@ -9,13 +9,12 @@ app.use(express.static(path.join(__dirname, '..', 'public')))
 app.get('/api/users', async (req, res, next) => {
   try {
     const users = await db.models.user.findAll()
-    res.json(users)
+    res.json(users).done()
   } catch (e) {
     console.error(e)
     next(e)
   }
 })
-
 
 module.exports = app
 
